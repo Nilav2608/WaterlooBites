@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<link href="./css/homepage.css" rel="stylesheet" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<div class="d-flex vh-100">
+    <!-- First Child Div with Animated Image -->
+<div class="flex-fill ">
+    <img src="./images/homepageimage.jpg"
+         alt="Welcome Image"
+             class="dynamic-border w-100 mt-5 h-90 object-fit-cover animated-image" />
+</div>
+
+    <!-- Second Child Div with Animated Button -->
+    <div class="flex-fill d-flex flex-column justify-content-center align-items-center">
+        <h1 class="fs-1 display-4 text-center mb-5" style="font-family: 'Pacifico', cursive; font-weight: 400; font-style: normal; font-size: 200px;">
+            Welcome to Waterloo Bites Reviews!
+        </h1>
+        <p>
+            <a asp-area="" asp-controller="Ratings" asp-action="Create" style="background-color:#87A2FF; color:white; font-size: 24px; font-weight: 600" class="btn animated-button">
+                Provide Review
+            </a>
+        </p>
+    </div>
+</div>
+

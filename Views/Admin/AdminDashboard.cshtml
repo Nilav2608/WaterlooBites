@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lobster&display=swap" rel="stylesheet">
+@* Only show this button to admins *@
+
+<div class="d-flex justify-content-between align-items-center">
+    <h1 style="font-family: 'Lobster', sans-serif;">Welcome Admin!</h1>
+    @if (User.IsInRole("Admin"))
+    {
+        <p class="mb-2" style="float:right;"><a class="btn text-light" style="background-color:#87A2FF;" href="@Url.Action("Index", "Ratings")">Manage All Ratings</a></p>
+    }
+</div>
+
+
+<img class="mt-5" style="width:100%" src="~/images/hello-mr-bean.gif" alt="Mr Bean Says Hi" />

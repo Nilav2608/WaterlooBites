@@ -1,0 +1,105 @@
+﻿@model WaterlooBites.Models.RatingsViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<h4>Give your valuable Reviews & Rating !!!</h4>
+<hr />
+
+<div class="row">
+    <!-- Left side: Image -->
+    <div class="col-md-6 image-container">
+        <!-- Ensure image path is correct -->
+        <img src="~/images/formpage.jpg" alt="Image" class="img-fluid" />
+    </div>
+
+    <!-- Right side: Form -->
+    <div class="col-md-6">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="RestaurantName" class="control-label "></label>
+                <input asp-for="RestaurantName" class="form-control" />
+                <span asp-validation-for="RestaurantName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FoodName" class="control-label mt-4"></label>
+                <input asp-for="FoodName" class="form-control" />
+                <span asp-validation-for="FoodName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="price" class="control-label mt-4"></label>
+                <input asp-for="price" class="form-control" />
+                <span asp-validation-for="price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Score" class="control-label mt-4"></label>
+                <input asp-for="Score" class="form-control" />
+                <span asp-validation-for="Score" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label mt-4"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image" class="control-label mt-4"></label>
+                <input asp-for="Image" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" style="background-color:#87A2FF;" class="btn text-light mt-4" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+<style>
+    .row {
+        display: flex;
+        height: 100vh; /* Ensure full height of the page */
+    }
+
+    .col-md-6 {
+        padding: 0; /* Remove padding for full width use */
+    }
+
+    .image-container {
+        position: relative;
+        overflow: hidden;
+    }
+
+        .image-container img {
+            width: 60%;
+            height: 60%;
+            object-fit: cover; /* Ensures the image covers the div area */
+        }
+
+    .col-md-6 form {
+        padding: 2rem; /* Space between form and container edges */
+        background-color: #ffffff; /* White background for the form */
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visibility */
+        border-radius: 8px; /* Optional: Rounded corners */
+        z-index: 10; /* Ensure form is on top of image */
+    }
+
+    .form-group label {
+        font-weight: bold;
+    }
+
+    .form-group input {
+        border-radius: 5px;
+    }
+
+    .btn {
+        width: 100%; /* Make the button fill the form width */
+    }
+</style>

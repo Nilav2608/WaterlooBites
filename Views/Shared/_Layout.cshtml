@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WaterlooBites</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WaterlooBites.styles.css" asp-append-version="true" />
+@* 
+    google font *@
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav style="background-color:#87A2FF; padding: 1rem 2rem;" class="navbar navbar-expand-lg navbar-light border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <img src="~/images/logo.png" style="width:80px" alt="Alternate Text" />
+
+                <a class="navbar-brand text-white fw-bold fs-4" asp-area="" asp-controller="Home" asp-action="Index">WaterlooBites</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" style="font-size: 1.5rem;" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" style="font-size: 1.5rem;" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        @if (User.Identity!.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <form action="/Admin/Logout" method="post" class="d-inline">
+                                    @Html.AntiForgeryToken() <!-- Anti-forgery token for security -->
+                                    <button type="submit" class="btn nav-link text-white" style="font-size: 1.5rem;">Logout</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-white" style="font-size: 1.5rem;" asp-area="" asp-controller="Admin" asp-action="AdminLogin">Login</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- CSS for Hover Effects -->
+        <style>
+            .navbar-nav .nav-link {
+                transition: color 0.3s ease, background-color 0.3s ease;
+            }
+
+                .navbar-nav .nav-link:hover {
+                    color: red; /* Change text color on hover */
+                    background-color: #80C4E9; /* Change background on hover */
+                    border-radius: 4px; /* Optional: Add rounded corners */
+                }
+
+                /* For active nav item */
+                .navbar-nav .nav-link.active {
+                    color: black;
+                    background-color: #5a7bff;
+                }
+        </style>
+
+
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container text-center">
+            &copy; 2024 - WaterlooBites - Nilavarasu Kumar - Thina - Rehan -<a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
